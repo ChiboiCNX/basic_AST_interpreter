@@ -28,4 +28,17 @@ const (
 
 	FUNCTION = "FUNCTION"
 	LET = "LET"
+	BANG = "!"
+	MINUS = "-"
+	SLASH = "/"
+	ASTERISK = "*"
+	LT = "<"
+	GT = ">"
+	RETURN = "return"
+	TRUE = "true"
+	ELSE = "else"
+	FALSE = "false"
+	EQ = "=="
+	IF = "if"
+	NOT_EQ = "!="
 )
