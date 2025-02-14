@@ -49,17 +49,17 @@ func (l *Lexer) skipWhitespace() {
 	}
 }
 
-func isDigit(ch byte) bool {
-	return '0' <= ch && ch <= '9'
-}
+// func isDigit(ch byte) bool {
+// 	return '0' <= ch && ch <= '9'
+// }
 
-func (l *Lexer) readNumber() string {
-	position := l.position
-	for isDigit(l.ch) {
-		l.readChar()
-	}
-	return l.input[position:l.position]
-}
+// func (l *Lexer) readNumber() string {
+// 	position := l.position
+// 	for isDigit(l.ch) {
+// 		l.readChar()
+// 	}
+// 	return l.input[position:l.position]
+// }
 
 
 func (l *Lexer) NextToken() token.Token {
@@ -85,6 +85,19 @@ func (l *Lexer) NextToken() token.Token {
 	    tok = newToken(token.LBRACE, l.ch)
     case '}':
 	    tok = newToken(token.RBRACE, l.ch)	
+    case '!':
+      tok = newToken(token.BANG, l.ch)
+    case '*':
+      tok = newToken(token.ASSIGN, l.ch)
+    case '/':
+      tok = newToken(token.SLASH, l.ch)  
+    case '<':
+      tok = newToken(token.LT, l.ch)
+    case '>':
+      tok = newToken(token.GT, l.ch)
+    case '-':
+      tok = newToken(token.MINUS, l.ch)
+  
     case 0:
 	    tok.Literal = ""
 	    tok.Type = token.EOF
@@ -111,6 +124,17 @@ func (l *Lexer) NextToken() token.Token {
 
 }
 
+func (l *Lexer) readNumber() string {
+  position := l.position
+  for isDigit(l.ch) {
+    l.readChar()
+  }
+  return l.input[position:l.position]
+}
+
+func isDigit(ch byte) bool {
+  return '0' <= ch && ch <= '9'
+}
 
 
 
